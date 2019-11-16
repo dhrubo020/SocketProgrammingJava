@@ -51,6 +51,7 @@ public class Client1 extends javax.swing.JFrame {
         res5 = new javax.swing.JTextField();
         res6 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
+        Close = new javax.swing.JButton();
 
         jTextField1.setText("jTextField1");
 
@@ -113,6 +114,13 @@ public class Client1 extends javax.swing.JFrame {
 
         jLabel1.setText("Client");
 
+        Close.setText("Close");
+        Close.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CloseActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -160,7 +168,11 @@ public class Client1 extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(res4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(res2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(res3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(res3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(162, 162, 162)
+                        .addComponent(Close)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(47, 47, 47))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -213,7 +225,9 @@ public class Client1 extends javax.swing.JFrame {
                     .addComponent(S5, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(sub6)
                     .addComponent(res6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(102, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addComponent(Close)
+                .addGap(43, 43, 43))
         );
 
         pack();
@@ -266,6 +280,17 @@ public class Client1 extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_SendActionPerformed
 
+    private void CloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CloseActionPerformed
+        // TODO add your handling code here:
+        try{
+            dout.close();  
+            s.close(); 
+            System.out.println("Connection closed!!");
+        }catch(Exception e){
+            
+        }
+    }//GEN-LAST:event_CloseActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -300,7 +325,7 @@ public class Client1 extends javax.swing.JFrame {
             }
         });
                 try{
-		s=new Socket("localhost",3333);  
+		s=new Socket("127.0.0.1",3333);  
 		din=new DataInputStream(s.getInputStream());  
 		dout=new DataOutputStream(s.getOutputStream());    
 		  
@@ -330,6 +355,7 @@ public class Client1 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private static javax.swing.JButton Close;
     private static javax.swing.JLabel S1;
     private static javax.swing.JLabel S2;
     private static javax.swing.JLabel S3;
